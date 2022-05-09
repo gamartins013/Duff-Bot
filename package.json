@@ -1,0 +1,44 @@
+{
+  "name": "duff-bot",
+  "version": "1.0.0",
+  "description": "Bot whatsapp",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "Gabriel Martins",
+  "license": "ISC",
+  "dependencies": {
+    "@bishal-9/youtube-to-mp3": "^1.0.0",
+    "@open-wa/wa-automate": "^4.35.13",
+    "@open-wa/wa-decrypt": "^2.0.1",
+    "audio-converter": "^1.0.13",
+    "axios": "^0.27.2",
+    "chalk": "^5.0.1",
+    "dialogflow": "^1.2.0",
+    "dotenv": "^16.0.0",
+    "ffmpeg": "^0.0.4",
+    "fs-extra": "^10.1.0",
+    "google-tts-api": "^2.0.2",
+    "googleapis": "^100.0.0",
+    "got": "^12.0.4",
+    "ics-to-json": "^1.0.0",
+    "moment-timezone": "^0.5.34",
+    "node-fetch": "^3.2.4",
+    "nodemon": "^2.0.16",
+    "request": "^2.88.2",
+    "video-converter": "^1.0.0",
+    "video-to-audio": "^1.0.1",
+    "youtube-mp3-downloader": "^0.7.10",
+    "youtube-search": "^1.1.6",
+    "ytdl-core": "^4.11.0"
+  }
+}

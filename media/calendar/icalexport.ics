@@ -1,0 +1,635 @@
+BEGIN:VCALENDAR
+METHOD:PUBLISH
+PRODID:-//Moodle Pty Ltd//NONSGML Moodle Version 2020061503.08//EN
+VERSION:2.0
+BEGIN:VEVENT
+UID:87125@eadgrad.mackenzie.br
+SUMMARY:Conferências está agendado para
+DESCRIPTION:
+CLASS:PUBLIC
+LAST-MODIFIED:20220503T222536Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220503T222500Z
+DTEND:20220503T222500Z
+CATEGORIES:ENAD60016-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:83748@eadgrad.mackenzie.br
+SUMMARY:N_PROG SIST II_A7 - Aplicando conhecimento está marcado(a) para est
+	a data
+	
+DESCRIPTION:-------------------------\n\nNesta aula\, foi apresentado como 
+	implementar um Web Service RESTful com acesso a uma base dados por meio do 
+	padrão DATA ACCESS OBJECT (DAO ). Para essa atividade\, você deve implement
+	ar um Web Service RESTful para acessar o banco de dados empresa e a tabela 
+	funcionario\, seguindo as especificações vistas na aula.  \n\nO acesso ao b
+	anco de dados EMPRESA será realizado pelas classes DAO desenvolvidas na AUL
+	A 4:  \n\n	*\nCLASSE JAVABEANS FUNCIONARIO.JAVA \n\n	*\nCLASSE FUNCIONARIOD
+	AO.JAVA \n\n	*\nCLASSE CONNECTIONFACTORY.JAVA \n\nSeu Web Service deverá di
+	sponibilizar os seguintes recursos: \n\nMétodo HTTP \n\nIdentificação do re
+	curso \n\nUtilização \n\nGET \n\n/sistema /rest/ funcionarios  \n\nRecupera
+	r os dados de todos os funcionários. \n\nGET \n\n/sistema /rest/funcionario
+	s/numat  \n\nRecuperar os dados de um determinado funcionário. \n\nGET \n\n
+	/sistema/rest/supervisores \n\nRecuperar os dados de todos os funcionários 
+	que são supervisores. \n\nPara cada um dos recursos propostos\, você deve i
+	mplementar um método no Web Service para tratar a requisição e um método na
+	 classe FUNCIONARIODAO (caso não a tenha implementado na Aula 4) para recup
+	erar as informações dos funcionários no banco de dados  EMPRESA. Os métodos
+	 que tratam as requisições devem devolver as respostas no formato JSON. \n\
+	nAbaixo\, seguem os exemplos de retorno para cada uma das requisições propo
+	stas na atividade: \n\nMétodo HTTP \n\nIdentificação do recurso \n\nUtiliza
+	ção \n\nGET \n\n/sistema/rest/funcionarios \n\nRecuperar os dados de todos 
+	os funcionários. \n\n  \n\nMétodo HTTP \n\nIdentificação do recurso \n\nUti
+	lização \n\nGET \n\n/sistema/rest/funcionarios/numat \n\nRecuperar os dados
+	 de um determinado funcionário. \n\n  \n\nMÉTODO HTTP \n\nIDENTIFICAÇÃO DO 
+	RECURSO \n\nUTILIZAÇÃO \n\nGET \n\n/sistema/rest/supervisores \n\nRecuperar
+	 os dados de todos os funcionários que são supervisores. \n\n  \n\n \n\nNes
+	ta atividade\, você deve enviar o projeto desenvolvido no NETBEANS  12.0 LT
+	S em um ARQUIVO COMPACTADO  com a extensão .ZIP. \n\nESTA ATIVIDADE VALE 1\
+	,5 PONTOS.\n\n 
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220129T172229Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220505T025900Z
+DTEND:20220505T025900Z
+CATEGORIES:EXAD60262-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:79174@eadgrad.mackenzie.br
+SUMMARY:N_BANC DAD II7 - Praticando está marcado(a) para esta data
+DESCRIPTION:Nesta atividade\, você implementará um bloco PL/SQL e\, utiliza
+	ndo a linguagem PL/SQL\, implementará uma procedure\, uma function e um tri
+	gger. O banco de dados a ser utilizado para esta atividade é o da Universid
+	ade (com o qual você já trabalhou em aulas anteriores).\n\n \n\nOBSERVAÇÕES
+	 IMPORTANTES:\n\n	* Recomendo implementar cada uma das questões utilizando 
+	o ORACLE LIVE SQL (https://livesql.oracle.com/ [1]) e assistir à videoaula 
+	da Aula 5\, intitulada “Como utilizar o Oracle Live SQL”.\n	* O Modelo Rela
+	cional\, as tabelas com dados\, o SCRIPT DE CRIAÇÃO DAS TABELAS e INSERÇÃO 
+	DE DADOS encontram-se após as questões.\n	* O Texto de Apoio e as videoaula
+	s desta Aula 7 te ajudarão bastante a fazer esta atividade.\n\n \n\n1) Impl
+	emente um BLOCO PL/SQL que aumente o salário da professora ‘Camila’\, obede
+	cendo às seguintes regras:\n\n	* se ela orienta mais de um aluno\, o aument
+	o será de 10%\;\n	* senão\, ela não terá aumento e deverá mostrar na tela ‘
+	_Não teve aumento\, pois não orientou mais de um aluno’._\n\n__\n\n \n\n2) 
+	Crie uma PROCEDURE que insira um aluno (já existente no banco de dados) em 
+	uma disciplina (também já existente no banco de dados). Ou seja\, o objetiv
+	o é inserir uma nova linha na tabela Aluno_Disc. Serão passados os seguinte
+	s argumentos:\n\n	* nome do aluno e nome da disciplina (já existentes no ba
+	nco de dados) e\, também\, a nota que o aluno teve nesta disciplina\;\n	* c
+	aso o aluno e/ou a disciplina não existam no banco de dados\, mostre uma me
+	nsagem dizendo que o aluno e/ou disciplina não existe(m) no banco de dados.
+	\n\n \n\nDepois da procedure criada\, utilize-a para inserir a aluna 'Regia
+	ne' na disciplina de 'Banco de Dados II' com nota igual a 8.\n\n \n\n3) Cri
+	e uma FUNCTION_ _que retorne a quantidade de disciplinas que um aluno já cu
+	rsou. A função receberá como argumento o nome do aluno (já existente no ban
+	co de dados).\n\n \n\nDepois da function criada\, faça um SELECT na tabela 
+	Dual para saber quantas disciplinas o aluno 'Rodrigo' já cursou.\n\n \n\n4)
+	 Crie um TRIGGER que é disparado quando a nota de um aluno em uma disciplin
+	a for atualizada. Se isso acontecer\, o trigger deverá inserir uma nova lin
+	ha na tabela Historico_Notas (que você deverá criar agora) com a matrícula 
+	do aluno\, o nome dele\, a nota antes da atualização\, a nota atual (após a
+	 atualização) e a data em que foi feita esta atualização no banco de dados.
+	\n\n \n\nCREATE TABLE Historico_Notas (\nMatricula INTEGER\,\nNome_Aluno VA
+	RCHAR(50)\,\nCod_Disciplina INTEGER\,\nNota_Antiga INTEGER\,\nNota_Atual IN
+	TEGER\,\nDt_Atualizacao DATE\,\nPRIMARY KEY(Matricula\, Cod_Disciplina\, No
+	ta_Antiga\, Nota_Atual)\n)\;\n\n \n\nENTREGUE O QUE FOI PEDIDO\, EM CADA QU
+	ESTÃO\, EM UM ÚNICO ARQUIVO PDF.\n\n \n\nMODELO UTILIZANDO A FERRAMENTA DBD
+	ESIGNER [2]\n\nTABELAS DESTE BANCO DE DADOS COM DADOS\n\n-- Script de criac
+	ao do banco de dados da Universidade\n\n \n\n-- Criacao das tabelas\n\n \n\
+	ncreate table Instituto (\nCod_instituto integer\,\nNome_Instituto varchar(
+	30)\,\nPrimary key(Cod_instituto))\;\n\n \n\ncreate table Curso (\nCod_curs
+	o integer\,\nNome_Curso varchar(30)\,\nCod_Instituto integer\,\nPrimary key
+	(Cod_curso)\,\nForeign key (Cod_instituto) References Instituto (Cod_instit
+	uto))\;\n\n \n\ncreate table Disciplina (\nCod_Disciplina integer\,\nNome_D
+	isciplina varchar(30)\,\nCod_Curso integer\,\nPrimary key(Cod_Disciplina)\,
+	\nForeign key (Cod_curso) References Curso (Cod_curso))\;\n\n \n\ncreate ta
+	ble Professor (\nCod_Professor integer\,\nNome_Professor varchar(30)\,\nSal
+	ario integer\,\nPrimary key(Cod_Professor))\;\n\n \n\ncreate table Aluno (\
+	nMatricula integer\,\nNome_Aluno varchar(30)\,\nBairro varchar(30)\,\nIdade
+	 integer\,\nCod_curso integer\,\nCod_Professor_Orientador integer\,\nPrimar
+	y key(Matricula)\,\nForeign key (Cod_curso) References Curso (Cod_curso)\,\
+	nForeign key (Cod_Professor_Orientador) References Professor(Cod_Professor)
+	)\;\n\n \n\ncreate table Aluno_Disc (\nMatricula integer\,\nCod_Disciplina 
+	integer\,\nNota integer\,\nPrimary key(Matricula\,Cod_Disciplina)\,\nForeig
+	n key (Matricula) References Aluno (Matricula)\,\nForeign key (Cod_Discipli
+	na) References Disciplina (Cod_Disciplina))\;\n\n \n\ncreate table Prof_Dis
+	c (\nCod_Professor integer\,\nCod_Disciplina integer\,\nDia_Semana varchar(
+	10)\,\nala integer\,\nPrimary key(Cod_Professor\,Cod_Disciplina)\,\nForeign
+	 key (Cod_Professor) References Professor(Cod_Professor)\,\nForeign key (Co
+	d_Disciplina) References Disciplina (Cod_Disciplina))\;\n\n \n\n-- Insercao
+	 de dados nas tabelas criadas anteriormente\n\n \n\ninsert into Instituto v
+	alues (1\, 'Ciencias Exatas')\;\ninsert into Instituto values (2\, 'Ciencia
+	s Humanas')\;\ninsert into Instituto values (3\, 'Ciencias Biologicas')\;\n
+	\n \n\ninsert into Curso values (1001\, 'Ciencia da Computacao'\, 1)\;\nins
+	ert into Curso values (1002\, 'Administracao de Empresas'\, 2)\;\n\n \n\nin
+	sert into Disciplina values (2001\, 'Banco de Dados I'\, 1001)\;\ninsert in
+	to Disciplina values (2002\, 'Engenharia de Software I'\, 1001)\;\ninsert i
+	nto Disciplina values (2003\, 'Banco de Dados II'\, 1001)\;\ninsert into Di
+	sciplina values (2004\, 'Interface Homem-Maquina'\, 1001)\;\ninsert into Di
+	sciplina values (2005\, 'Engenharia de Software II'\, 1001)\;\n\n \n\ninser
+	t into Professor values (3001\, 'Camila'\, 1500)\;\ninsert into Professor v
+	alues (3002\, 'Joao'\, 3000)\;\ninsert into Professor values (3003\, 'Ana'\
+	, 3000)\;\ninsert into Professor values (3004\, 'Pedro'\, 2500)\;\n\n \n\ni
+	nsert into Aluno values (1\, 'Claudia'\, 'Vila Mariana'\, 20\, 1001\, 3001)
+	\;\ninsert into Aluno values (2\, 'Andrea'\, 'Lapa'\, 24\, 1001\, 3002)\;\n
+	insert into Aluno values (3\, 'Regiane'\, 'Penha'\, 22\, 1001\, 3004)\;\nin
+	sert into Aluno values (4\, 'Rodrigo'\, 'Sumare'\, 20\, 1002\, 3001)\;\nins
+	ert into Aluno values (5\, 'Renata'\, 'Vila Mariana'\, 22\, 1002\, 3004)\;\
+	n\n \n\ninsert into Aluno_Disc values (1\, 2001\,8)\;\ninsert into Aluno_Di
+	sc values (1\, 2002\,7)\;\ninsert into Aluno_Disc values (4\, 2003\,6)\;\ni
+	nsert into Aluno_Disc values (4\, 2004\,10)\;\ninsert into Aluno_Disc value
+	s (4\, 2005\,8)\;\n\n \n\ninsert into Prof_Disc values (3001\, 2001\, 'Segu
+	nda'\, 201)\;\ninsert into Prof_Disc values (3002\, 2002\, 'Quarta'\, 104)\
+	;\ninsert into Prof_Disc values (3001\, 2003\, 'Sexta'\, 105)\;\ninsert int
+	o Prof_Disc values (3004\, 2004\, 'Terca'\, 106)\;\ninsert into Prof_Disc v
+	alues (3002\, 2005\, 'Quarta'\, 110)\;\n\n\n\nLinks:\n------\n[1] https://l
+	ivesql.oracle.com/\n[2] https://eadgrad.mackenzie.br/mod/resource/view.php?
+	id=271938\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220129T180129Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220507T025900Z
+DTEND:20220507T025900Z
+CATEGORIES:ENAD60016-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:83760@eadgrad.mackenzie.br
+SUMMARY:N_BANC DAD II7 - MOMENTO COM O PROFESSOR - Fórum de discussão deve 
+	estar concluído
+	
+DESCRIPTION:Discuta com seus colegas as seguintes questões:\n\n	*  Quando d
+	evemos utilizar uma procedure?\n	* Quando devemos utilizar uma function?\n	
+	* Quando devemos utilizar um trigger?\n\nESTE FÓRUM NÃO SERÁ AVALIATIVO\, O
+	 OBJETIVO É CRIAR UM ESPAÇO DE DISCUSSÃO PARA A TURMA.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220503T213511Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220507T025900Z
+DTEND:20220507T025900Z
+CATEGORIES:ENAD60016-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:84566@eadgrad.mackenzie.br
+SUMMARY:Término de N_BANC DAD II7  - Aplicando conhecimento
+DESCRIPTION:Acredito que você já tenha aprendido e praticado bastante a lin
+	guagem PL/SQL\, procedure e trigger. Responda às seguintes questões avaliat
+	ivas para consolidar todo este conhecimento adquirido?\n\n Analise\, com ba
+	stante atenção\, as questões a seguir.\n\nVocê poderá responder este questi
+	onário duas vezes\, e apenas seu melhor desempenho ficará registrado.\n\n O
+	 gabarito será disponibilizado somente na data de encerramento da atividade
+	.\n\nESTA ATIVIDADE VALE 1 PONTO. \n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220503T213512Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220507T025900Z
+DTEND:20220507T025900Z
+CATEGORIES:ENAD60016-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:79283@eadgrad.mackenzie.br
+SUMMARY:N_COM_DAD_A7_Aplicando conhecimento está marcado(a) para esta data
+DESCRIPTION:Nesta atividade de pesquisa\, você deverá apresentar a diferenç
+	a entre Switches e Roteadores. Não se esqueça de comentar os seguintes tema
+	s:\n\n \n\n - Características principais dos dispositivos.\n\n - Quando dev
+	o usar um ou outro.\n\n - Como o dispositivo toma a decisão para encaminhar
+	 os pacotes.\n\n - Como são geradas as tabelas de repasse de cada dispositi
+	vo.\n\n - O que são as técnicas de Cut-trough e Store-and-forward e quais s
+	ão as vantagens de cada uma delas.\n\n \n\nEsta atividade vale 1\,5 pontos.
+	\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220203T201133Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60031-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:79353@eadgrad.mackenzie.br
+SUMMARY:DES-SIS-II - A7 Praticando 1 está marcado(a) para esta data
+DESCRIPTION:-------------------------\n\nNesta atividade\, resolva a propos
+	ta a seguir: \n\n \n\nConsiderando a continuação de nosso jogo digital cham
+	ado “As Aventuras de Superpadrãozinho”\, suponha que o personagem principal
+	 pode sofrer danos\, se atacado por algum dos animais perigosos do nível. C
+	omo representar as possibilidades de se ter o herói (ou heroína) saudável o
+	u com dano? \n\n \n\nDICA: É IMPORTANTE QUE VOCÊ TENHA LIDO O TEXTO DE APOI
+	O PARA REALIZAR A ATIVIDADE. \n\nEsta atividade vale créditos que\, ao fina
+	l do componente curricular\, serão convertidos em nota de participação. \n\
+	n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220329T230110Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60042-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:79355@eadgrad.mackenzie.br
+SUMMARY:DES-SIS-II - A7 Praticando 2 está marcado(a) para esta data
+DESCRIPTION:-------------------------\n\nNesta atividade\, resolva a propos
+	ta a seguir:  \n\n \n\nContinuando nosso jogo digital chamado “As Aventuras
+	 de Superpadrãozinho” (ou Superpadrãozinha\, dependendo do avatar)\, lembre
+	-se de que o herói (ou heroína) tem um cinto com várias utilidades\, inclus
+	ive armas para se defender do ataque de animais ferozes. Use o padrão Strat
+	egy para modelar a situação em que o personagem usa uma arma de defesa ou u
+	ma arma de ataque\, dependendo da quantidade de animais perigosos que o ata
+	quem. \n\n \n\nEsta atividade vale créditos que\, ao final do componente cu
+	rricular\, serão convertidos em nota de participação. \n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220329T230223Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60042-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:79357@eadgrad.mackenzie.br
+SUMMARY:DES-SIS-II - A7 Aplicando conhecimento está marcado(a) para esta da
+	ta
+	
+DESCRIPTION:-------------------------\n\nReúna os diagramas feitos na Aula 
+	6\, e também os que foram realizados nas duas atividades Praticando desta a
+	ula\, junte-os em um único diagrama de classes e acrescente ao menos um uso
+	 de State ou Strategy diferente dos utilizados nas atividades. \n\n \n\nDic
+	a: tente usar as classes que representam as armas no cinto “mágico” do padr
+	ão Decorator. \n\n \n\nEsta atividade vale 1 ponto. \n\n 
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220329T230334Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60042-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:79633@eadgrad.mackenzie.br
+SUMMARY:N_EST DAD_A7 – Aplicando Conhecimento está marcado(a) para esta dat
+	a
+	
+DESCRIPTION:-------------------------\n\nResponda às questões disponíveis n
+	o arquivo a seguir.\n\nOs alunos deverão entregar os exercícios em um arqui
+	vo .pdf.\n\nEsta atividade vale 1 ponto.\n\nAcessar:\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220128T164628Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60093-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:85002@eadgrad.mackenzie.br
+SUMMARY:Início de DES-SIS-II - A8  Praticando 1
+DESCRIPTION:Com base no conteúdo trabalhado nesta aula\, responda ao questi
+	onário. \nAo resolver as questões\, finalize e envie o questionário.  \nVoc
+	ê poderá respondê-lo duas vezes\, e apenas seu melhor desempenho ficará reg
+	istrado.  \nO gabarito será disponibilizado somente na data de encerramento
+	 da atividade.  \nEsta atividade vale créditos que\, ao final do componente
+	 curricular\, serão convertidos em nota de participação. \n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220329T230502Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60042-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:85004@eadgrad.mackenzie.br
+SUMMARY:Início de DES-SIS-II - A8  Praticando 2
+DESCRIPTION:Com base no conteúdo trabalhado nesta aula\, responda ao questi
+	onário. \nAo resolver as questões\, finalize e envie o questionário.  \nVoc
+	ê poderá respondê-lo duas vezes\, e apenas seu melhor desempenho ficará reg
+	istrado.  \nO gabarito será disponibilizado somente na data de encerramento
+	 da atividade.  \nEsta atividade vale créditos que\, ao final do componente
+	 curricular\, serão convertidos em nota de participação. \n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220329T231052Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60042-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:85006@eadgrad.mackenzie.br
+SUMMARY:DES-SIS-II - A8  Momento com o Professor – FÓRUM DE DÚVIDAS é devid
+	o
+	
+DESCRIPTION:Ficou com dúvidas em algum ponto do Texto de Apoio ou sobre o c
+	onteúdo apresentado em outro recurso? Durante as atividades\, ficou com dúv
+	idas ou não entendeu algum passo?  \n \nUtilize o fórum para enviar seus qu
+	estionamentos! \n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220329T231157Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60042-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:85890@eadgrad.mackenzie.br
+SUMMARY:Término de N_COM_DAD_A7 - Praticando
+DESCRIPTION:Com base no conteúdo trabalhado nessa aula\, responda ao questi
+	onário. \n\n \n\nAo resolver as questões\, finalize e envie o questionário.
+	\n\n \n\nVocê poderá respondê-lo duas vezes\, e apenas seu melhor desempenh
+	o ficará registrado.\n\n \n\nO gabarito será disponibilizado somente na dat
+	a de encerramento da atividade.\n\n \n\nEsta atividade vale créditos que\, 
+	ao final do componente curricular\, serão convertidos em nota de participaç
+	ão.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220405T193442Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60031-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:85892@eadgrad.mackenzie.br
+SUMMARY:Término de N_COM_DAD_A7 - Praticando
+DESCRIPTION:Com base no conteúdo trabalhado nessa aula\, responda ao questi
+	onário. \n\n \n\nAo resolver as questões\, finalize e envie o questionário.
+	\n\n \n\nVocê poderá respondê-lo duas vezes\, e apenas seu melhor desempenh
+	o ficará registrado.\n\n \n\nO gabarito será disponibilizado somente na dat
+	a de encerramento da atividade.\n\n \n\nEsta atividade vale créditos que\, 
+	ao final do componente curricular\, serão convertidos em nota de participaç
+	ão.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220405T193500Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220510T025900Z
+DTEND:20220510T025900Z
+CATEGORIES:ENAD60031-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:83117@eadgrad.mackenzie.br
+SUMMARY:Conferências está agendado para
+DESCRIPTION:Atenção para o cronograma de nossos encontros "ao vivo":\n\n21/
+	fev - 19h\n\n18/abr - 19h\n\n02/mai - 19h\n\n16/mai - 19h\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220503T141048Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220516T215500Z
+DTEND:20220516T215500Z
+CATEGORIES:ENAD60093-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:85893@eadgrad.mackenzie.br
+SUMMARY:Término de N_COM_DAD_A8 - Praticando
+DESCRIPTION:Com base no conteúdo trabalhado nessa aula\, responda ao questi
+	onário. \n\n \n\nAo resolver as questões\, finalize e envie o questionário.
+	\n\n \n\nVocê poderá respondê-lo duas vezes\, e apenas seu melhor desempenh
+	o ficará registrado.\n\n \n\nO gabarito será disponibilizado somente na dat
+	a de encerramento da atividade.\n\n \n\nEsta atividade vale créditos que\, 
+	ao final do componente curricular\, serão convertidos em nota de participaç
+	ão.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220405T193554Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220517T025900Z
+DTEND:20220517T025900Z
+CATEGORIES:ENAD60031-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:85894@eadgrad.mackenzie.br
+SUMMARY:Término de N_COM_DAD_A8 - Aplicando Conhecimento
+DESCRIPTION:Com base no conteúdo trabalhado nessa aula\, responda ao questi
+	onário. \n\n \n\nAo resolver as questões\, finalize e envie o questionário.
+	\n\n \n\nVocê poderá respondê-lo duas vezes\, e apenas seu melhor desempenh
+	o ficará registrado.\n\n \n\nO gabarito será disponibilizado somente na dat
+	a de encerramento da atividade.\n\n \n\nEsta atividade vale 1\,5 ponto.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220405T193612Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220517T025900Z
+DTEND:20220517T025900Z
+CATEGORIES:ENAD60031-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:83753@eadgrad.mackenzie.br
+SUMMARY:N_PROG SIST II_A8 - Aplicando conhecimento está marcado(a) para est
+	a data
+	
+DESCRIPTION:-------------------------\n\nNa Aula 8\, completamos o desenvol
+	vimento de um Web Service no padrão REST que implementa todas as operações 
+	básicas de manipulação de dados para um sistema\, ou seja\, implementamos u
+	ma aplicação CRUD (Create\, Read\, Update\, Delete) por meio de um Web Serv
+	ice. Nesta atividade\, você deve completar a implementação do Web Service R
+	ESTful começada na atividade APLICANDO CONHECIMENTO da Aula 7\, isto é\, vo
+	cê implementará os seguintes recursos para manipular os dados dos funcionár
+	ios na base de dados: \n\nMétodo HTTP \n\nDescrição do recurso \n\nGET \n\n
+	Recupera os dados de um determinado funcionário a partir de seu número de m
+	atrícula (numat). \n\nDELETE \n\nRemove um determinado funcionário a partir
+	 de seu número de matrícula (numat). \n\nPOST \n\nAdiciona um novo funcioná
+	rio. \n\nPUT \n\nAtualiza os dados de um determinado funcionário a partir d
+	e seu número de matrícula (numat). \n\nPara cada um dos recursos propostos\
+	, você deve implementar um método no Web Service para tratar a requisição d
+	o recurso e implementar também um método na classe FUNCIONARIODAO (caso não
+	 tenha implementado nas aulas anteriores) para manipular as informações dos
+	 funcionários no banco de dados EMPRESA. \n\nAs respostas dos métodos que t
+	ratam a requisição de um recurso no Web Service RESTful devem estar no form
+	ato JSON e\, além disso\, as operações implementadas em seu Web Service dev
+	em atender aos seguintes scripts implementados utilizando a API FETCH.  \n\
+	nMÉTODO @GET: recupera os dados de um determinado funcionário a partir de s
+	eu número de matrícula (NUMAT): \n\nFETCH('/EMPRESA/SISTEMA/REST/FUNCIONARI
+	OS/1234'). \n\nTHEN(RESPOSTA => { \n\n   IF (!RESPOSTA.OK){ \n\n       THRO
+	W ERROR(RESPOSTA.STATUS)\;  \n\n   } \n\n   RETURN RESPOSTA.JSON()\; \n\n }
+	). \n\nTHEN(JSONREPOSTA => CONSOLE.LOG(JSONREPOSTA)).  \n\nCATCH(ERRO => CO
+	NSOLE.LOG("ERRO NÃO ENCONTRADO NUMAT DO FUNCIONARIO"))\;  \n\n \n\nMÉTODO @
+	DELETE: remove um determinado funcionário a partir de seu número de matrícu
+	la (numat): \n\nFETCH('/EMPRESA/SISTEMA/REST/FUNCIONARIOS/6666'\,{METHOD: '
+	DELETE'}). \n\nTHEN(RESPOSTA => { \n\n   IF (!RESPOSTA.OK){ \n\n       THRO
+	W ERROR(RESPOSTA.STATUS)\;  \n\n   } \n\n   RETURN RESPOSTA\; \n\n }). \n\n
+	THEN(JSONREPOSTA => CONSOLE.LOG("FUNCIONARIO REMOVIDO")).  \n\nCATCH(ERRO =
+	> CONSOLE.LOG("ERRO NÃO ENCONTRADO NUMAT DO FUNCIONARIO"))\; \n\n \n\nMÉTOD
+	O @POST: adiciona um novo funcionário a partir de seu número de matrícula (
+	numat): \n\nFETCH('/EMPRESA/SISTEMA/REST/FUNCIONARIOS/'\,  \n\n  {METHOD: '
+	POST'\, \n\n    BODY: JSON.STRINGIFY({ \n\n        NUMAT: 6666\, \n\n      
+	  NOME: 'FABIO LUBACHESKI'\, \n\n        SALARIO: 100.00\, \n\n        SEXO
+	: 'M'\, \n\n        NDEPTO: 5\, \n\n        NSUPER: 9876 \n\n    })\, \n\n 
+	   HEADERS: { \n\n        "CONTENT-TYPE": "APPLICATION/JSON" \n\n    } \n\n
+	}). \n\nTHEN(RESPOSTA => { \n\n   IF (!RESPOSTA.OK){ \n\n       THROW ERROR
+	(RESPOSTA.STATUS)\;  \n\n   } \n\n   RETURN RESPOSTA\; \n\n }). \n\nTHEN(JS
+	ONREPOSTA => CONSOLE.LOG("FUNCIONARIO INSERIDO.")).  \n\nCATCH(ERRO => CONS
+	OLE.LOG("ERRO NA INSERÇÃO."))\;  \n\n \n\nMÉTODO @PUT: atualiza os dados de
+	 um determinado funcionário a partir de seu número de matrícula (numat): \n
+	\nFETCH('/EMPRESA/SISTEMA/REST/FUNCIONARIOS/'\,  \n\n  {METHOD: 'PUT'\, \n\
+	n    BODY: JSON.STRINGIFY({ \n\n        NUMAT: 6666\, \n\n        NOME: 'FA
+	BIO G LUBACHESKI'\, \n\n        SALARIO: 20000.00\, \n\n        SEXO: 'M'\,
+	 \n\n        NDEPTO: 5\, \n\n        NSUPER: 9876 \n\n    })\, \n\n    HEAD
+	ERS: { \n\n        "CONTENT-TYPE": "APPLICATION/JSON" \n\n    } \n\n}). \n\
+	nTHEN(RESPOSTA => { \n\n   IF (!RESPOSTA.OK){ \n\n       THROW ERROR(RESPOS
+	TA.STATUS)\;  \n\n   } \n\n   RETURN RESPOSTA\; \n\n }). \n\nTHEN(JSONREPOS
+	TA => CONSOLE.LOG("FUNCIONARIO ATUALIZADO.")). \n\nCATCH(ERRO => CONSOLE.LO
+	G("ERRO NA ATUALIZAÇÃO."))\;  \n\n \n\nNesta atividade\, você deve enviar o
+	 projeto desenvolvido no NETBEANS 12.0 LTS em um ARQUIVO COMPACTADO com a e
+	xtensão .ZIP. \n\nESTA ATIVIDADE VALE 1\,0 PONTO.\n\n 
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220129T173733Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220519T025900Z
+DTEND:20220519T025900Z
+CATEGORIES:EXAD60262-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:79176@eadgrad.mackenzie.br
+SUMMARY:N_BANC DAD II8 - Praticando está marcado(a) para esta data
+DESCRIPTION:Você aprendeu que o gerenciamento de transações em um banco de 
+	dados envolve a recuperação e a concorrência em um banco de dados. Com base
+	 nisso\, responda às seguintes questões?\n\n \n\n1) Como você definiria uma
+	 transação?\n\n2) As transações possuem as seguintes propriedades: atomicid
+	ade\, consistência\, isolamento e durabilidade\, também conhecidas pelo acr
+	ônimo ACID. Comente\, com suas palavras\, cada uma destas propriedades.\n\n
+	3) Alguns problemas de concorrência podem resultar do acesso simultâneo a u
+	m banco de dados por mais de uma transação.\n\nA figura abaixo ilustra duas
+	 transações – A e B – sendo executadas simultaneamente. Qual é o problema d
+	e concorrência mostrado nesta figura?\n\n4) Suponha que uma transação T1 ad
+	quiriu um bloqueioX (de escrita) sobre um objeto z do banco de dados. Neste
+	 momento\, outra transação T2 tenta ler o mesmo objeto z do banco de dados.
+	 A transação T2 conseguirá o bloqueioC (de leitura) sobre o objeto z? Expli
+	que sua resposta.\n\n \n\nENTREGAR AS QUESTÕES EM UM ARQUIVO PDF.\n\nESTA A
+	TIVIDADE VALE CRÉDITOS QUE\, AO FINAL DO COMPONENTE CURRICULAR\, SERÃO CONV
+	ERTIDOS EM NOTA DE PARTICIPAÇÃO.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220129T181228Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220521T025900Z
+DTEND:20220521T025900Z
+CATEGORIES:ENAD60016-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:79634@eadgrad.mackenzie.br
+SUMMARY:N_EST DAD_A8 – Aplicando Conhecimento está marcado(a) para esta dat
+	a
+	
+DESCRIPTION:-------------------------\n\nCONHEÇA UM POUCO SOBRE OS CÓDIGOS 
+	DE BARRA NO FORMATO GTIN-13\n\nA GS1 é uma organização internacional que se
+	 dedica ao design e à implementação de padrões mundiais e soluções para aum
+	entar a eficiência dos serviços de automação comercial. Uma de suas princip
+	ais atividades é o fornecimento de padrões de identificação de diferentes t
+	ipos de produtos (varejo\, livros\, periódicos\, medicamentos etc.) por mei
+	o de códigos de barra.\n\nNo segmento do varejo (por exemplo\, os supermerc
+	ados)\, é usado o GTIN (_Global Trade Item Number_) para identificar os pro
+	dutos por meio de quatro tipos de padrões: GTIN-14 dígitos\, GTIN-13 dígito
+	s\, GTIN-12 dígitos e GTIN-8 dígitos. No Brasil\, o órgão responsável é o G
+	S1-Brasil (http://www.gs1brasil.org.br). Vamos nos concentrar no padrão de 
+	13 dígitos\, que é definido como: Numeração GTIN-13 – uso geral para todos 
+	os itens que recebem preço e podem ser comercializados pela cadeia de supri
+	mentos.\n\nA numeração GTIN-13 é a identificação básica de todo item. Este 
+	é o modelo mais conhecido e usado nos produtos do Brasil. Veja um modelo:\n
+	\nNeste padrão\, todo produto deve ter seu código atribuído da seguinte for
+	ma:\n\nCaso queira conhecer os códigos dos países\, consulte este link:\n<h
+	ttps://pt.wikipedia.org/wiki/Lista_de_c%C3%B3digos_de_pa%C3%ADs_GS1 [1]>\n\
+	nVisto isso\, faça uma aplicação em Java que armazene\, em uma tabela Hash 
+	de tamanho = 10\, objetos do tipo produto que têm os seguintes atributos:\n
+	\nCódigo produto – String (padrão GTIN-13)\nDescrição do produto – String\n
+	Preço – double\n\nDe acordo com a proposta\, você deverá criar a classe Pro
+	duto\, bem como a classe para armazenar a Tabela Hash e a classe de teste.\
+	n\nNa classe de teste\, cadastre diversos produtos e execute as operações d
+	e exclusão e busca de produtos\, conforme os modelos estudados.\n\nATENÇÃO:
+	\n\n1) O código do produto deve ser validado\, isto é\, deve conter obrigat
+	oriamente 13 dígitos no momento do cadastramento\; a descrição não pode est
+	ar em branco e o preço deve ser maior que zero.\n\n2) Você deverá implement
+	ar alguma funcionalidade diferente em seu código (mostrar o nome do país\, 
+	contar quantos produtos são de um mesmo país ou alguma outra funcionalidade
+	 qualquer).\n\n3) Você poderá optar pelo método do tratamento das colisões 
+	que desejar: Separate Chaining ou Linear Probing.\n\n4) A função hash dever
+	á ser calculada levando-se em consideração apenas os três primeiros caracte
+	res do código do produto\, os quais indicam o país de origem. Você poderá c
+	riar sua própria função hash\, ou\, ainda\, usar alguma das estudadas no cu
+	rso.\n\nEntregue o código Java de todo projeto em um arquivo PDF\, bem como
+	 um print da tela de execução.\n\nEsta atividade vale 1\,5 pontos.\n\n\n\nL
+	inks:\n------\n[1] https://pt.wikipedia.org/wiki/Lista_de_c%C3%B3digos_de_p
+	a%C3%ADs_GS1\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220128T165331Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220521T025900Z
+DTEND:20220521T025900Z
+CATEGORIES:ENAD60093-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:83762@eadgrad.mackenzie.br
+SUMMARY:Término de N_BANC DAD II8  - Aplicando conhecimento
+DESCRIPTION:Acredito que você já tenha aprendido bastante sobre as propried
+	ades das transações\, recuperação e concorrência em um banco de dados.\n\nQ
+	ue tal\, agora\, responder às seguintes questões avaliativas para consolida
+	r todo este conhecimento adquirido?\n\nVocê poderá responder esse questioná
+	rio duas vezes\, e apenas seu melhor desempenho ficará registrado.\n\nO gab
+	arito será disponibilizado somente na data de encerramento da atividade.\n\
+	nESTA ATIVIDADE VALE 1 PONTO. \n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220503T213512Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220521T025900Z
+DTEND:20220521T025900Z
+CATEGORIES:ENAD60016-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:85003@eadgrad.mackenzie.br
+SUMMARY:Término de DES-SIS-II - A8  Praticando 1
+DESCRIPTION:Com base no conteúdo trabalhado nesta aula\, responda ao questi
+	onário. \nAo resolver as questões\, finalize e envie o questionário.  \nVoc
+	ê poderá respondê-lo duas vezes\, e apenas seu melhor desempenho ficará reg
+	istrado.  \nO gabarito será disponibilizado somente na data de encerramento
+	 da atividade.  \nEsta atividade vale créditos que\, ao final do componente
+	 curricular\, serão convertidos em nota de participação. \n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220329T230502Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220620T090000Z
+DTEND:20220620T090000Z
+CATEGORIES:ENAD60042-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:85005@eadgrad.mackenzie.br
+SUMMARY:Término de DES-SIS-II - A8  Praticando 2
+DESCRIPTION:Com base no conteúdo trabalhado nesta aula\, responda ao questi
+	onário. \nAo resolver as questões\, finalize e envie o questionário.  \nVoc
+	ê poderá respondê-lo duas vezes\, e apenas seu melhor desempenho ficará reg
+	istrado.  \nO gabarito será disponibilizado somente na data de encerramento
+	 da atividade.  \nEsta atividade vale créditos que\, ao final do componente
+	 curricular\, serão convertidos em nota de participação. \n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220329T231052Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220620T090000Z
+DTEND:20220620T090000Z
+CATEGORIES:ENAD60042-03A
+END:VEVENT
+BEGIN:VEVENT
+UID:79359@eadgrad.mackenzie.br
+SUMMARY:DES-SIS-II - A8  Aplicando conhecimento está marcado(a) para esta d
+	ata
+	
+DESCRIPTION:Considerando o que foi visto nesta aula\, busque um exemplo de 
+	um sistema projetado sob uma arquitetura de camadas (3\, 4 ou 5). Indique a
+	 fonte de sua pesquisa e explique como é feita a divisão entre camadas no c
+	aso desse sistema. \n\n \n\nEsta atividade vale 1 ponto.  \n\n 
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20220329T231239Z
+DTSTAMP:20220506T172620Z
+DTSTART:20220621T025900Z
+DTEND:20220621T025900Z
+CATEGORIES:ENAD60042-03A
+END:VEVENT
+END:VCALENDAR
