@@ -17,7 +17,7 @@ const config = require("./config/config");
 const ffmpeg = require("fluent-ffmpeg");
 var search = require("youtube-search");
 const YoutubeMp3Downloader = require("youtube-mp3-downloader");
-const calendar = require ('./media/calendar/calendar.json')
+const calendario = require("./media/calendar/calendar.json");
 
 moment.tz.setDefault("America/Sao_Paulo").locale("pt-br");
 
@@ -150,7 +150,6 @@ module.exports = msgHandler = async (client, message) => {
     const ownerNumber = ["5511968905353@c.us", "5511968905353"]; // replace with your whatsapp number
     const isQuotedImage = quotedMsg && quotedMsg.type == "image";
     const isQuotedVideo = quotedMsg && quotedMsg.type == "video";
-    
 
     const isBlocked = blockNumber.includes(sender.id);
     const uaOverride =
@@ -293,12 +292,17 @@ module.exports = msgHandler = async (client, message) => {
         break;
 
       case "gava":
-        await client.sendFile(
+        await client.sendReplyWithMentions(
           from,
-          "./media/img/gava.jpg",
-          "gava",
-          `bó pra academia ${pushname} ?`,
+          "trabaiando @5518997887743",
           id
+        );
+        const gif3 = await fs.readFileSync("./media/img/catProg.jpeg", {
+          encoding: "base64",
+        });
+        await client.sendImageAsSticker(
+          from,
+          `data:image/gif;base64,${gif3.toString("base64")}`
         );
         break;
 
@@ -314,8 +318,33 @@ module.exports = msgHandler = async (client, message) => {
       case "xofs":
         await client.sendReplyWithMentions(
           from,
-          "não fala comigo, estou de férias!! @5511944781750",
+          `OLÁ A SENHORITA @5511944781750 NÃO QUER FALAR COM VOCÊ ${pushname}!! `,
           id
+        );
+        break;
+
+      case "academia":
+        await client.sendFile(
+          from,
+          "./media/img/gava.jpg",
+          "gava",
+          `bó pra academia ${pushname} ?`,
+          id
+        );
+        break;
+
+      case "hope":
+        await client.sendReplyWithMentions(
+          from,
+          "tô triste @5511986082537",
+          id
+        );
+        const gif2 = await fs.readFileSync("./media/img/hope.jpeg", {
+          encoding: "base64",
+        });
+        await client.sendImageAsSticker(
+          from,
+          `data:image/gif;base64,${gif2.toString("base64")}`
         );
         break;
 
@@ -341,9 +370,8 @@ module.exports = msgHandler = async (client, message) => {
           "duff",
           `Bom dia ${pushname}`,
           id
-        ); 
+        );
         break;
-
 
       case "boa tarde":
         await client.reply(from, `Boa tarde ${pushname}!`, id);
@@ -418,8 +446,8 @@ module.exports = msgHandler = async (client, message) => {
             ffmpegPath: "C:/ffmpeg/bin/ffmpeg", // FFmpeg binary location
             outputPath: "./media/ytDown", // Output file location (default: the home directory)
             youtubeVideoQuality: "highestaudio", // Desired video quality (default: highestaudio)
-            queueParallelism: 2, // Download parallelism (default: 1)
-            progressTimeout: 2000, // Interval in ms for the progress reports (default: 1000)
+            queueParallelism: 3, // Download parallelism (default: 1)
+            progressTimeout: 1000, // Interval in ms for the progress reports (default: 1000)
             allowWebm: false, // Enable download from WebM sources (default: false)
           });
 
@@ -431,7 +459,7 @@ module.exports = msgHandler = async (client, message) => {
           const pesq = args.slice(1).join(" ");
           search(pesq, opts, async function (err, results) {
             if (err) return console.log(err);
-            console.log(results);
+            console.log(`Estou baixando esse vídeo: `, color(results[0].title));
 
             YD.download(results[0].id, results[0].id + ".mp3");
             client.reply(from, "Estou procurando o vídeo", id);
@@ -447,20 +475,30 @@ Canal: ${results[0].channelTitle}
             );
 
             YD.on("finished", function (err, data) {
-              client.sendPtt(from, `./media/ytDown/${results[0].id}.mp3`, id);
-              console.log(JSON.stringify(data));
+              client.sendFile(from, `./media/ytDown/${results[0].id}.mp3`, id);
+              console.log("Já enviei o vídeo...");
+              //console.log(JSON.stringify(data));
             });
 
             YD.on("error", function (error) {
-              client.reply(from, "Não consegui baixar o video vei", id);
-              console.log(error);
+              client.reply(
+                from,
+                "Não consegui baixar o video vei, muito grande esse ai",
+                id
+              );
+              //console.log(error);
             });
 
-            console.log("Enviando");
+            YD.on("progress", function (progress) {
+              console.log(`
+Calma ai que eu já baixei: ${progress.progress.percentage.toFixed(2)}%
+Faltam apenas ${progress.progress.eta} segundos para terminar de baixar!!
+              `);
+            });
           });
         } catch (e) {
           console.log(e);
-          client.reply(from, `ERRO A\n${e}`, id);
+          client.reply(from, `Vish meu mano deu erro no negócio ali\n${e}`, id);
         }
         break;
 
@@ -573,18 +611,55 @@ Canal: ${results[0].channelTitle}
         }
         break;
 
-      case "!menu":
-        const helpMode = args[1];
+      case "!atividades":
+        function parseDate(dateString) {
+          // Covert YYYYMMDDTHHMMSSZ to brl date format
+          const parsedDate =
+            dateString.substring(0, 4) +
+            "-" +
+            dateString.substring(4, 6) +
+            "-" +
+            dateString.substring(6, 8) +
+            " " +
+            dateString.substring(9, 11) +
+            ":" +
+            dateString.substring(11, 13) +
+            ":" +
+            dateString.substring(13, 15);
 
-        if (!helpMode) {
-          await client.sendText(from, helpers.help);
-        } else {
-          //helpMode == 'audios' && await client.sendText(from, helpers.helpAudios);
-          //helpMode == 'figurinhas' && await client.sendText(from, helpers.helpFigurinhas);
-          //helpMode == 'papo' && await client.sendText(from, helpers.helpPapo);
-          //helpMode == 'outros' && await client.sendText(from, helpers.helpOutros);
-          //helpMode == 'grupos' && await client.sendText(from, helpers.helpGrupos);
-          //helpMode == 'consultas' && await client.sendText(from, helpers.helpConsultas);
+          // Convert to brazil format
+          const dateBr = new Date(parsedDate);
+          const dateBrString = dateBr.toLocaleString("pt-BR");
+          return dateBrString;
+        }
+
+        function eventData(evento) {
+          return {
+            uid: evento.uid,
+            summary: evento.summary,
+            description: evento.description,
+            class: evento.class,
+            "last-modified": parseDate(evento["last-modified"]),
+            dtstamp: parseDate(evento.dtstamp),
+            dtstart: parseDate(evento.dtstart),
+            dtend: parseDate(evento.dtend),
+            categories: evento.categories,
+          };
+        }
+        // Get event from date
+        const date = new Date().toLocaleDateString("pt-BR");
+        const eventos = calendario.vcalendar[0].vevent.map(evento => eventData(evento))
+        .filter(evento => evento.dtend.includes(date))
+        if (eventos.length > 0) {
+          eventos.forEach(evento => {
+            client.reply(from,
+              `
+*Hoje tem atividade de:* ${evento.summary}
+*A atividade vai terminar no dia:* ${evento.dtend}
+              `, id)
+          });
+        }else{
+          client.reply(from,"Hoje nao tem atividade!", id)
         }
         break;
     }
