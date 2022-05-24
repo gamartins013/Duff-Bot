@@ -228,186 +228,6 @@ module.exports = msgHandler = async (client, message) => {
     }
 
     switch (falas) {
-      case "help":
-        await client.sendText(from, helpers.help);
-        break;
-
-      case "toca o berrante":
-        await client.sendFile(
-          from,
-          "./media/audios/berrante.mpeg",
-          "Toca o berrante seu moço",
-          "AAAAAAAAAUHHH",
-          id
-        );
-        break;
-
-      case "vamos acordar":
-        await client.sendFile(
-          from,
-          "./media/audios/vamoacordar.mpeg",
-          "Vamos acordar porra",
-          "AAAAAAAAAUHHH",
-          id
-        );
-        break;
-
-      case "xofana":
-        await client.sendFile(
-          from,
-          "./media/img/xofana.jpeg",
-          "xofana",
-          `Fala ${pushname}`,
-          id
-        );
-        break;
-
-      case "gui":
-        await client.sendFile(
-          from,
-          "./media/img/gui.jpg",
-          "gui",
-          `Hm... ${pushname}`,
-          id
-        );
-        break;
-
-      case "camila":
-        await client.sendFile(
-          from,
-          "./media/img/catCamila.jpeg",
-          "camila",
-          `Oia o bolotinha ${pushname}`,
-          id
-        );
-        break;
-
-      case "sara":
-      case "saromba":
-        await client.sendReplyWithMentions(
-          from,
-          "RESPONDE AI  @5511961582676",
-          id
-        );
-        break;
-
-      case "gava":
-        await client.sendReplyWithMentions(
-          from,
-          "trabaiando @5518997887743",
-          id
-        );
-        const gif3 = await fs.readFileSync("./media/img/catProg.jpeg", {
-          encoding: "base64",
-        });
-        await client.sendImageAsSticker(
-          from,
-          `data:image/gif;base64,${gif3.toString("base64")}`
-        );
-        break;
-
-      case "bot":
-        await client.sendFile(
-          from,
-          "./media/img/opa.jpeg",
-          "duff",
-          `Opaa, diga ai meu patrão ${pushname}`,
-          id
-        );
-        break;
-      case "xofs":
-        await client.sendReplyWithMentions(
-          from,
-          `OLÁ A SENHORITA @5511944781750 NÃO QUER FALAR COM VOCÊ ${pushname}!! `,
-          id
-        );
-        break;
-
-      case "academia":
-        await client.sendFile(
-          from,
-          "./media/img/gava.jpg",
-          "gava",
-          `bó pra academia ${pushname} ?`,
-          id
-        );
-        break;
-
-      case "hope":
-        await client.sendReplyWithMentions(
-          from,
-          "tô triste @5511986082537",
-          id
-        );
-        const gif2 = await fs.readFileSync("./media/img/hope.jpeg", {
-          encoding: "base64",
-        });
-        await client.sendImageAsSticker(
-          from,
-          `data:image/gif;base64,${gif2.toString("base64")}`
-        );
-        break;
-
-      case "teteu":
-        await client.sendReplyWithMentions(
-          from,
-          "fala comigo mô @5519971269828",
-          id
-        );
-        break;
-      case "tia":
-        await client.sendReplyWithMentions(
-          from,
-          `Oi sobrinho ${pushname}, fala com a tia @5519981134103`,
-          id
-        );
-        break;
-
-      case "bom dia":
-        await client.sendFile(
-          from,
-          "./media/img/trabaia.jpg",
-          "duff",
-          `Bom dia ${pushname}`,
-          id
-        );
-        break;
-
-      case "boa tarde":
-        await client.reply(from, `Boa tarde ${pushname}!`, id);
-        break;
-
-      case "boa noite":
-        await client.sendFile(
-          from,
-          "./media/img/amimir.jpg",
-          "duff",
-          `Boa noite ${pushname}`,
-          id
-        );
-        break;
-
-      case "sextou":
-        if (moment().format("dddd") == "sexta-feira") {
-          await client.reply(from, "ôpa, bora??", id);
-          // const gif1 = await fs.readFileSync("./media/sexto.webp", {
-          //   encoding: "base64",
-          // });
-          // await client.sendImageAsSticker(
-          //   from,
-          //   `data:image/gif;base64,${gif1.toString("base64")}`
-          // );
-        } else {
-          await client.reply(
-            from,
-            `Uai, hoje ainda e ${moment().format(
-              "dddd"
-            )} e você já ta procurando sexta-feira?....`,
-            id
-          );
-        }
-
-        break;
     }
 
     command.replaceAll("_", "");
@@ -613,7 +433,7 @@ Faltam apenas ${progress.progress.eta} segundos para terminar de baixar!!
 
       case "!atividades":
         function parseDate(dateString) {
-          // Covert YYYYMMDDTHHMMSSZ to brl date format
+   
           const parsedDate =
             dateString.substring(0, 4) +
             "-" +
@@ -627,7 +447,7 @@ Faltam apenas ${progress.progress.eta} segundos para terminar de baixar!!
             ":" +
             dateString.substring(13, 15);
 
-          // Convert to brazil format
+ 
           const dateBr = new Date(parsedDate);
           const dateBrString = dateBr.toLocaleString("pt-BR");
           return dateBrString;
@@ -646,7 +466,7 @@ Faltam apenas ${progress.progress.eta} segundos para terminar de baixar!!
             categories: evento.categories,
           };
         }
-        // Get event from date
+
         const date = new Date().toLocaleDateString("pt-BR");
         const eventos = calendario.vcalendar[0].vevent.map(evento => eventData(evento))
         .filter(evento => evento.dtend.includes(date))
