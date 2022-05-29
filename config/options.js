@@ -1,4 +1,4 @@
-module.exports = options = (headless, start) => {
+export default  (headless, start) => {
     const options = {
         blockCrashLogs: false,
         disableSpins: false,

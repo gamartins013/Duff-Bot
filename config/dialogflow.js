@@ -1,5 +1,8 @@
-const dialogflow = require("dialogflow");
-const config = require("./config");
+// const dialogflow = require("dialogflow");
+// const config = require("./config");
+
+import dialogflow from "dialogflow"
+import config from "./config";
 
 const credentials = {
   client_email: config.GOOGLE_CLIENT_EMAIL,
@@ -64,6 +67,6 @@ async function sendToDialogFlow(msg, session, source, params) {
   }
 }
 
-module.exports = {
+export default {
   sendToDialogFlow,
 };

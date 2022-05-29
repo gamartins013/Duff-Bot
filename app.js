@@ -1,48 +1,31 @@
-const { create, Client, decryptMedia, ev, SimpleListener, smartUserAgent, NotificationLanguage } = require('@open-wa/wa-automate')
-const msgHandler = require('./msgHndlr')
-const options = require('./config/options')
-const { help } = require('./lib/help')
-
+// const { create, Client, decryptMedia, ev, SimpleListener, smartUserAgent, NotificationLanguage } = require('@open-wa/wa-automate')
+// const msgHandler = require('./msgHndlr')
+// const options = require('./config/options')
+// const { help } = require('./lib/help')
+import { Client, create } from "@open-wa/wa-automate";
+import options from "./config/options.js";
+import msgHandler from "./msgHndlr.js";
 
 const start = async (client = new Client()) => {
+  console.log("[SERVER] Servidor iniciado!");
 
-        console.log('[SERVER] Servidor iniciado!')
+  client.onStateChanged((state) => {
+    console.log("[Status do cliente]", state);
+    if (state === "CONFLICT" || state === "UNLAUNCHED") client.forceRefocus();
+  });
 
-        client.onStateChanged((state) => {
-            console.log('[Status do cliente]', state)
-            if (state === 'CONFLICT' || state === 'UNLAUNCHED') client.forceRefocus()
-        })
+  // listening on message
+  client.onMessage(async (message) => {
+    client.getAmountOfLoadedMessages().then((msg) => {
+      if (msg >= 3000) {
+        client.cutMsgCache();
+      }
+    });
 
-        // listening on message
-        client.onMessage((async (message) => {
-
-            client.getAmountOfLoadedMessages()
-            .then((msg) => {
-                if (msg >= 3000) {
-                    client.cutMsgCache()
-                }
-            })
-
-            msgHandler(client, message)
-
-        }))
-        
-        client.onButton((async (chat ) => {
-        
-            switch (chat?.body) {
-                case 'Menu do bot':
-                        await client.sendText(chat?.chatId, help)
-                    break;
-            
-                case 'Quem sou eu?':
-            	        await client.sendText(chat?.chatId, `AAAAAAAAAAAAAAAA`)
-                    break;
-            }
-
-        }))
-
-}
+    msgHandler(client, message);
+  });
+};
 
 create(options(true, start))
-    .then(client => start(client))
-    .catch((error) => console.log(error))
+  .then((client) => start(client))
+  .catch((error) => console.log(error));

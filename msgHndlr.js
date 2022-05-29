@@ -1,23 +1,41 @@
-const { decryptMedia } = require("@open-wa/wa-decrypt");
-const fs = require("fs-extra");
-const axios = require("axios");
-const moment = require("moment-timezone");
-const color = require("./lib/colors");
-const { helpers } = require("./lib/help");
-const path = require("path");
-require("dotenv/config");
-const botName = "Duff-Bot";
-const http = require("http");
-const https = require("https");
-const urlParse = require("url").parse;
-const ytdl = require("ytdl-core");
-const googleTTS = require("google-tts-api"); // CommonJS
-const dialogflow = require("dialogflow");
-const config = require("./config/config");
-const ffmpeg = require("fluent-ffmpeg");
-var search = require("youtube-search");
-const YoutubeMp3Downloader = require("youtube-mp3-downloader");
-const calendario = require("./media/calendar/calendar.json");
+//const { decryptMedia } = require("@open-wa/wa-decrypt");
+// const fs = require("fs-extra");
+// const axios = require("axios");
+// const moment = require("moment-timezone");
+// const color = require("./lib/colors");
+// const { helpers } = require("./lib/help");
+// const path = require("path");
+// require("dotenv/config");
+// const botName = "Duff-Bot";
+// const http = require("http");
+// const https = require("https");
+// const urlParse = require("url").parse;
+// const ytdl = require("ytdl-core");
+// const googleTTS = require("google-tts-api"); // CommonJS
+// const dialogflow = require("dialogflow");
+// const config = require("./config/config");
+// const ffmpeg = require("fluent-ffmpeg");
+// var search = require("youtube-search");
+// const YoutubeMp3Downloader = require("youtube-mp3-downloader");
+// const calendario = require("./media/calendar/calendar.json");
+// const images = require("./lib/images")
+
+import decryptMedia from "@open-wa/wa-decrypt"
+import fs from "fs-extra"
+import path from "path"
+import  images  from "./lib/images.js"
+import axios from "axios"
+import moment from "moment-timezone"
+import color from "./lib/colors.js"
+const botName= "Duff-Bot"
+import googleTTS from "google-tts-api"
+import dialogflow from "dialogflow"
+import * as config from "./config/config.js"
+import search from "youtube-search"
+import YoutubeMp3Downloader from "youtube-mp3-downloader";
+import calendario from "./media/calendar/calendar.json" assert {type: "json"}
+import {fetchBase64, uploadImages} from "./lib/fetcher.js"
+
 
 moment.tz.setDefault("America/Sao_Paulo").locale("pt-br");
 
@@ -93,7 +111,7 @@ async function sendToDialogFlow(msg, session, params) {
   }
 }
 
-module.exports = msgHandler = async (client, message) => {
+export default async (client, message) => {
   try {
     const {
       id,
@@ -228,6 +246,186 @@ module.exports = msgHandler = async (client, message) => {
     }
 
     switch (falas) {
+      case "help":
+        await client.sendText(from, helpers.help);
+        break;
+
+      case "toca o berrante":
+        await client.sendFile(
+          from,
+          "./media/audios/berrante.mpeg",
+          "Toca o berrante seu moço",
+          "AAAAAAAAAUHHH",
+          id
+        );
+        break;
+
+      case "vamos acordar":
+        await client.sendFile(
+          from,
+          "./media/audios/vamoacordar.mpeg",
+          "Vamos acordar porra",
+          "AAAAAAAAAUHHH",
+          id
+        );
+        break;
+
+      case "xofana":
+        await client.sendFile(
+          from,
+          "./media/img/xofana.jpeg",
+          "xofana",
+          `Fala ${pushname}`,
+          id
+        );
+        break;
+
+      case "gui":
+        await client.sendFile(
+          from,
+          "./media/img/gui.jpg",
+          "gui",
+          `Hm... ${pushname}`,
+          id
+        );
+        break;
+
+      case "bolotinha":
+        await client.sendFile(
+          from,
+          "./media/img/catCamila.jpeg",
+          "camila",
+          `Oia o bolotinha ${pushname}`,
+          id
+        );
+        break;
+
+      case "sara":
+      case "saromba":
+        await client.sendReplyWithMentions(
+          from,
+          "RESPONDE AI  @5511961582676",
+          id
+        );
+        break;
+
+      case "gava":
+        await client.sendReplyWithMentions(
+          from,
+          "trabaiando @5518997887743",
+          id
+        );
+        const gif3 = await fs.readFileSync("./media/img/catProg.jpeg", {
+          encoding: "base64",
+        });
+        await client.sendImageAsSticker(
+          from,
+          `data:image/gif;base64,${gif3.toString("base64")}`
+        );
+        break;
+
+      case "bot":
+        await client.sendFile(
+          from,
+          "./media/img/opa.jpeg",
+          "duff",
+          `Opaa, diga ai meu patrão ${pushname}`,
+          id
+        );
+        break;
+      case "xofs":
+        await client.sendReplyWithMentions(
+          from,
+          `OLÁ A SENHORITA @5511944781750 NÃO QUER FALAR COM VOCÊ ${pushname}!! `,
+          id
+        );
+        break;
+
+      case "academia":
+        await client.sendFile(
+          from,
+          "./media/img/gava.jpg",
+          "gava",
+          `bó pra academia ${pushname} ?`,
+          id
+        );
+        break;
+
+      case "hope":
+        await client.sendReplyWithMentions(
+          from,
+          "tô triste @5511986082537",
+          id
+        );
+        const gif2 = await fs.readFileSync("./media/img/hope.jpeg", {
+          encoding: "base64",
+        });
+        await client.sendImageAsSticker(
+          from,
+          `data:image/gif;base64,${gif2.toString("base64")}`
+        );
+        break;
+
+      case "teteu":
+        await client.sendReplyWithMentions(
+          from,
+          "fala comigo mô @5519971269828",
+          id
+        );
+        break;
+      case "tia":
+        await client.sendReplyWithMentions(
+          from,
+          `Oi sobrinho ${pushname}, fala com a tia @5519981134103`,
+          id
+        );
+        break;
+
+      case "bom dia":
+        await client.sendFile(
+          from,
+          "./media/img/trabaia.jpg",
+          "duff",
+          `Bom dia ${pushname}`,
+          id
+        );
+        break;
+
+      case "boa tarde":
+        await client.reply(from, `Boa tarde ${pushname}!`, id);
+        break;
+
+      case "boa noite":
+        await client.sendFile(
+          from,
+          "./media/img/amimir.jpg",
+          "duff",
+          `Boa noite ${pushname}`,
+          id
+        );
+        break;
+
+      case "sextou":
+        if (moment().format("dddd") == "sexta-feira") {
+          await client.reply(from, "ôpa, bora??", id);
+          // const gif1 = await fs.readFileSync("./media/sexto.webp", {
+          //   encoding: "base64",
+          // });
+          // await client.sendImageAsSticker(
+          //   from,
+          //   `data:image/gif;base64,${gif1.toString("base64")}`
+          // );
+        } else {
+          await client.reply(
+            from,
+            `Uai, hoje ainda e ${moment().format(
+              "dddd"
+            )} e você já ta procurando sexta-feira?....`,
+            id
+          );
+        }
+
+        break;
     }
 
     command.replaceAll("_", "");
@@ -433,7 +631,6 @@ Faltam apenas ${progress.progress.eta} segundos para terminar de baixar!!
 
       case "!atividades":
         function parseDate(dateString) {
-   
           const parsedDate =
             dateString.substring(0, 4) +
             "-" +
@@ -447,7 +644,6 @@ Faltam apenas ${progress.progress.eta} segundos para terminar de baixar!!
             ":" +
             dateString.substring(13, 15);
 
- 
           const dateBr = new Date(parsedDate);
           const dateBrString = dateBr.toLocaleString("pt-BR");
           return dateBrString;
@@ -468,20 +664,98 @@ Faltam apenas ${progress.progress.eta} segundos para terminar de baixar!!
         }
 
         const date = new Date().toLocaleDateString("pt-BR");
-        const eventos = calendario.vcalendar[0].vevent.map(evento => eventData(evento))
-        .filter(evento => evento.dtend.includes(date))
+        const eventos = calendario.vcalendar[0].vevent
+          .map((evento) => eventData(evento))
+          .filter((evento) => evento.dtend.includes(date));
         if (eventos.length > 0) {
-          eventos.forEach(evento => {
-            client.reply(from,
+          eventos.forEach((evento) => {
+            client.reply(
+              from,
               `
 *Hoje tem atividade de:* ${evento.summary}
 *A atividade vai terminar no dia:* ${evento.dtend}
-              `, id)
+              `,
+              id
+            );
           });
-        }else{
-          client.reply(from,"Hoje nao tem atividade!", id)
+        } else {
+          client.reply(from, "Hoje nao tem atividade!", id);
         }
         break;
+
+      case "!cep":
+        if (args.length === 1)
+        return client.reply(
+          from,
+          "Digita um cep ai pra mim vai",
+          id
+        );
+
+        const cep = args[1];
+
+        let consultaCep = await axios.get(
+          `https://ws.apicep.com/cep/${cep}.json
+          )}`
+        );
+
+        await client.reply(from, `
+        *Rua:* ${consultaCep.data.address}
+*Bairro:* ${consultaCep.data.district}
+*Cidade:* ${consultaCep.data.city}
+*Estado:* ${consultaCep.data.state}
+*Cep:* ${consultaCep.data.code}
+        `, id)
+
+        break;
+
+      case "!procurado":
+        const isUrl = (url) => {
+          return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi))
+      }
+        const getRandom	= (list) => {
+          return list[Math.floor((Math.random() * list.length))];
+        }
+        if (!isGroupMsg) {
+					return client.reply(from, mess.error.nG, id);
+				}
+
+				await client.reply(from, '[🖥️] Calma ai, eu tõ consultando o computador da polícia...', id);
+
+				const groupMembers		= await client.getGroupMembers(groupId);
+       // console.log(groupMembers)
+				const randomMember		= await images.randomMember(client, botNumber, groupMembers);
+        //console.log(randomMember)
+				if (!randomMember) {
+					return client.reply(from, '[🤖] Fiquem tranquilos, não existe nenhum procurado(a) neste grupo!', id);
+				}
+
+				const crimes			= [
+					['Estava roubando WiFi 😱', 'O elemento estava roubando WiFi!'],
+					['Destruidor de corações 💔', 'O elemento é destruidor(a) de corações'],
+					['Andou de bicicleta na calçada 🤭', 'O elemento andou de bicicleta na calçada'],
+					['Passou de carro na poça d\'água para molhar pedestres 😂', 'O elemento passou de carro na poça d\'água para molhar pedestres'],
+					['Bebeu de mais e ligou pro(a) ex 🤦‍♂️', 'O elemento bebeu de mais e ligou pro(a) ex'],
+					['Dormiu de mais e perdeu um compromisso 😴', 'O elemento dormiu de mais e perdeu um compromisso'],
+					['Dar descarga no vaso à noite 🚽🌃', 'O elemento deu descarga no vaso à noite'],
+					['Xingar em público 🤬', 'O elemento realizou xingamentos em público'],
+					['Passou trote no 190 🚔', 'O elemento passou trote no 190'],
+				];
+				const crime	= getRandom(crimes);
+
+				const avatarMember	= await client.getProfilePicFromServer(randomMember.id);
+				if (!isUrl(avatarMember)) {
+					return client.reply(from, '[🤖] Fiquem tranquilos, não existe nenhum procurado(a) neste grupo!', id);
+				}
+				const ImgContent		= await fetchBase64(avatarMember);
+				const ImgBuffer		= Buffer.from(ImgContent.split(',')[1], "base64");
+				const marker			= randomMember.id.replace(/@c.us/g, '');
+				const ImgUrl			= await uploadImages(ImgBuffer, false);
+        const ImgBase64		= await images.makeWanted(ImgUrl, crime[1]);
+				await client.sendFile(from, ImgBase64, 'wanted.png', `🚨 *Procurado(a):* @${marker}\n-❥ *Crime:* ${crime[0]}\n-❥ *Pena:* 50 anos de reclusão e 500 dias-multa`, id, true)
+					.catch((err) => {
+						client.reply(from, mess.error.cA, id);
+					});
+				break;
     }
   } catch (err) {
     await client.sendText(`Puts, deu merda... Erro: ${err}`);
