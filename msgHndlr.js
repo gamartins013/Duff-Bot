@@ -20,22 +20,22 @@
 // const calendario = require("./media/calendar/calendar.json");
 // const images = require("./lib/images")
 
-import decryptMedia from "@open-wa/wa-decrypt"
-import fs from "fs-extra"
-import path from "path"
-import  images  from "./lib/images.js"
-import axios from "axios"
-import moment from "moment-timezone"
-import color from "./lib/colors.js"
-const botName= "Duff-Bot"
-import googleTTS from "google-tts-api"
-import dialogflow from "dialogflow"
-import * as config from "./config/config.js"
-import search from "youtube-search"
+import decryptMedia from "@open-wa/wa-decrypt";
+import fs from "fs-extra";
+import path from "path";
+import images from "./lib/images.js";
+import axios from "axios";
+import moment from "moment-timezone";
+import color from "./lib/colors.js";
+const botName = "Duff-Bot";
+import googleTTS from "google-tts-api";
+import dialogflow from "dialogflow";
+import * as config from "./config/config.js";
+import search from "youtube-search";
 import YoutubeMp3Downloader from "youtube-mp3-downloader";
-import calendario from "./media/calendar/calendar.json" assert {type: "json"}
-import {fetchBase64, uploadImages} from "./lib/fetcher.js"
-
+import calendario from "./media/calendar/calendar.json" assert { type: "json" };
+import { fetchBase64, uploadImages } from "./lib/fetcher.js";
+import receitas from "./media/receitas/receitas.json" assert { type: "json" };
 
 moment.tz.setDefault("America/Sao_Paulo").locale("pt-br");
 
@@ -246,10 +246,6 @@ export default async (client, message) => {
     }
 
     switch (falas) {
-      case "help":
-        await client.sendText(from, helpers.help);
-        break;
-
       case "toca o berrante":
         await client.sendFile(
           from,
@@ -424,14 +420,24 @@ export default async (client, message) => {
             id
           );
         }
-
-        break;
     }
 
     command.replaceAll("_", "");
     command.replaceAll("*", "");
     command.replaceAll("`", "");
     switch (command) {
+      case "!covid":
+        axios
+          .get(`https://coronavirus-19-api.herokuapp.com/countries/brazil`)
+          .then((response) => {
+            var data = response.data;
+            client.reply(
+              from,
+              `🌎️ *Informações COVID-19 Brasil*\n\n✨️ *Total de Casos:* ${data.cases}\n☣️ *Total de Mortes:* ${data.deaths}\n⛩️ *Casos Ativos:* ${data.active}`,
+              id
+            );
+          });
+        break;
       case "!tts":
         if (args.length === 1)
           return client.reply(from, "Como eu vou adivinhar o devo buscar?", id);
@@ -685,11 +691,7 @@ Faltam apenas ${progress.progress.eta} segundos para terminar de baixar!!
 
       case "!cep":
         if (args.length === 1)
-        return client.reply(
-          from,
-          "Digita um cep ai pra mim vai",
-          id
-        );
+          return client.reply(from, "Digita um cep ai pra mim vai", id);
 
         const cep = args[1];
 
@@ -698,64 +700,142 @@ Faltam apenas ${progress.progress.eta} segundos para terminar de baixar!!
           )}`
         );
 
-        await client.reply(from, `
+        await client.reply(
+          from,
+          `
         *Rua:* ${consultaCep.data.address}
 *Bairro:* ${consultaCep.data.district}
 *Cidade:* ${consultaCep.data.city}
 *Estado:* ${consultaCep.data.state}
 *Cep:* ${consultaCep.data.code}
-        `, id)
+        `,
+          id
+        );
 
         break;
 
       case "!procurado":
         const isUrl = (url) => {
-          return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi))
-      }
-        const getRandom	= (list) => {
-          return list[Math.floor((Math.random() * list.length))];
-        }
+          return url.match(
+            new RegExp(
+              /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi
+            )
+          );
+        };
+        const getRandom = (list) => {
+          return list[Math.floor(Math.random() * list.length)];
+        };
         if (!isGroupMsg) {
-					return client.reply(from, mess.error.nG, id);
-				}
+          return client.reply(from, mess.error.nG, id);
+        }
 
-				await client.reply(from, '[🖥️] Calma ai, eu tõ consultando o computador da polícia...', id);
+        await client.reply(
+          from,
+          "[🖥️] Calma ai, eu tõ consultando o computador da polícia...",
+          id
+        );
 
-				const groupMembers		= await client.getGroupMembers(groupId);
-       // console.log(groupMembers)
-				const randomMember		= await images.randomMember(client, botNumber, groupMembers);
+        const groupMembers = await client.getGroupMembers(groupId);
+        // console.log(groupMembers)
+        const randomMember = await images.randomMember(
+          client,
+          botNumber,
+          groupMembers
+        );
         //console.log(randomMember)
-				if (!randomMember) {
-					return client.reply(from, '[🤖] Fiquem tranquilos, não existe nenhum procurado(a) neste grupo!', id);
-				}
+        if (!randomMember) {
+          return client.reply(
+            from,
+            "[🤖] Fiquem tranquilos, não existe nenhum procurado(a) neste grupo!",
+            id
+          );
+        }
 
-				const crimes			= [
-					['Estava roubando WiFi 😱', 'O elemento estava roubando WiFi!'],
-					['Destruidor de corações 💔', 'O elemento é destruidor(a) de corações'],
-					['Andou de bicicleta na calçada 🤭', 'O elemento andou de bicicleta na calçada'],
-					['Passou de carro na poça d\'água para molhar pedestres 😂', 'O elemento passou de carro na poça d\'água para molhar pedestres'],
-					['Bebeu de mais e ligou pro(a) ex 🤦‍♂️', 'O elemento bebeu de mais e ligou pro(a) ex'],
-					['Dormiu de mais e perdeu um compromisso 😴', 'O elemento dormiu de mais e perdeu um compromisso'],
-					['Dar descarga no vaso à noite 🚽🌃', 'O elemento deu descarga no vaso à noite'],
-					['Xingar em público 🤬', 'O elemento realizou xingamentos em público'],
-					['Passou trote no 190 🚔', 'O elemento passou trote no 190'],
-				];
-				const crime	= getRandom(crimes);
+        const crimes = [
+          ["Estava roubando WiFi 😱", "O elemento estava roubando WiFi!"],
+          [
+            "Destruidor de corações 💔",
+            "O elemento é destruidor(a) de corações",
+          ],
+          [
+            "Andou de bicicleta na calçada 🤭",
+            "O elemento andou de bicicleta na calçada",
+          ],
+          [
+            "Passou de carro na poça d'água para molhar pedestres 😂",
+            "O elemento passou de carro na poça d'água para molhar pedestres",
+          ],
+          [
+            "Bebeu de mais e ligou pro(a) ex 🤦‍♂️",
+            "O elemento bebeu de mais e ligou pro(a) ex",
+          ],
+          [
+            "Dormiu de mais e perdeu um compromisso 😴",
+            "O elemento dormiu de mais e perdeu um compromisso",
+          ],
+          [
+            "Dar descarga no vaso à noite 🚽🌃",
+            "O elemento deu descarga no vaso à noite",
+          ],
+          [
+            "Xingar em público 🤬",
+            "O elemento realizou xingamentos em público",
+          ],
+          ["Passou trote no 190 🚔", "O elemento passou trote no 190"],
+        ];
+        const crime = getRandom(crimes);
 
-				const avatarMember	= await client.getProfilePicFromServer(randomMember.id);
-				if (!isUrl(avatarMember)) {
-					return client.reply(from, '[🤖] Fiquem tranquilos, não existe nenhum procurado(a) neste grupo!', id);
-				}
-				const ImgContent		= await fetchBase64(avatarMember);
-				const ImgBuffer		= Buffer.from(ImgContent.split(',')[1], "base64");
-				const marker			= randomMember.id.replace(/@c.us/g, '');
-				const ImgUrl			= await uploadImages(ImgBuffer, false);
-        const ImgBase64		= await images.makeWanted(ImgUrl, crime[1]);
-				await client.sendFile(from, ImgBase64, 'wanted.png', `🚨 *Procurado(a):* @${marker}\n-❥ *Crime:* ${crime[0]}\n-❥ *Pena:* 50 anos de reclusão e 500 dias-multa`, id, true)
-					.catch((err) => {
-						client.reply(from, mess.error.cA, id);
-					});
-				break;
+        const avatarMember = await client.getProfilePicFromServer(
+          randomMember.id
+        );
+        if (!isUrl(avatarMember)) {
+          return client.reply(
+            from,
+            "[🤖] Fiquem tranquilos, não existe nenhum procurado(a) neste grupo!",
+            id
+          );
+        }
+        const ImgContent = await fetchBase64(avatarMember);
+        const ImgBuffer = Buffer.from(ImgContent.split(",")[1], "base64");
+        const marker = randomMember.id.replace(/@c.us/g, "");
+        const ImgUrl = await uploadImages(ImgBuffer, false);
+        const ImgBase64 = await images.makeWanted(ImgUrl, crime[1]);
+        await client
+          .sendFile(
+            from,
+            ImgBase64,
+            "wanted.png",
+            `🚨 *Procurado(a):* @${marker}\n-❥ *Crime:* ${crime[0]}\n-❥ *Pena:* 50 anos de reclusão e 500 dias-multa`,
+            id,
+            true
+          )
+          .catch((err) => {
+            client.reply(from, mess.error.cA, id);
+          });
+        break;
+
+      case "!receitas":
+        if (args.length === 1)
+          return client.reply(from, "Digita uma receita ai pra mim vai", id);
+
+        const nomeReceitas = body.slice(10);
+
+        if (nomeReceitas != "") {
+          const teste = receitas.find((receita) => {
+            return receita.nome
+              .toLowerCase()
+              .includes(nomeReceitas.toLowerCase());
+          });
+          client.reply(
+            from,
+            `
+*Nome da Receita:* ${teste.nome}
+*Ingredientes:*\n${teste.secao[0].conteudo.join("\n")}
+*Modo de Preparo:*\n${teste.secao[1].conteudo.join("\n")}
+`,
+            id
+          );
+        }
     }
   } catch (err) {
     await client.sendText(`Puts, deu merda... Erro: ${err}`);
